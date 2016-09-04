@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="../script/scripts.js" type="text/javascript"></script>
+        <style>
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 200px;
+                background-color: #f1f1f1;
+            }
+
+            li a {
+                display: block;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+            /* Change the link color on hover */
+            li a:hover {
+                background-color: #555;
+                color: white;
+            }
+            #container {
+                width: 840px;
+                margin: 25px auto;
+            }
+
+            .whysign {
+
+
+                background-color: white;
+
+                border-radius: 0 5px 5px 0;
+
+            }
+
+            .signup {
+
+                width: 300px;
+                padding: 30px 20px;
+                background-color: white;
+                text-align: center;
+                border-radius: 5px 0 0 5px;
+            }
+
+            [type=text] {
+                display: block;
+                margin: 0 auto;
+                width: 80%;
+                border: 0;
+                border-bottom: 1px solid rgba(0,0,0,.2);
+                height: 45px;
+                line-height: 45px;  
+                margin-bottom: 10px;
+                font-size: 1em;
+                color: rgba(0,0,0,.4);
+            }
+
+            [type=submit] {
+                margin-top: 25px;
+                width: 80%;
+                border: 0;
+                background-color: #53CACE;
+                border-radius: 5px;
+                height: 50px;
+                color: white;
+                font-weight: 400;
+                font-size: 1em;
+            }
+
+            [type='text']:focus {
+                outline: none;
+                border-color: #53CACE;
+            }
+
+            h1 {
+                color: rgba(0,0,0,.7);
+                font-weight: 900;
+                font-size: 2.5em;
+            }
+
+            p {
+                color: rgba(0,0,0,.6);
+                font-size: 1.2em;
+                margin: 50px 0 50px 0;
+            }
+
+            span {
+                font-size: .75em;
+                background-color: white;
+                padding: 2px 5px;
+                color: rgba(0,0,0,.6);
+                border-radius: 2px;
+                box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+                margin: 5px;
+            }
+
+            span:hover {
+                color: #53CACE;
+            }
+
+            p:nth-of-type(2) {
+                font-size: 1em;
+            }
+
+            /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+            .row.content {height: 1500px}
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            /* Set black background color, white text and some padding */
+            footer {
+                background-color: #555;
+                color: white;
+                padding: 15px;
+            }
+
+            /* On small screens, set height to 'auto' for sidenav and grid */
+            @media screen and (max-width: 767px) {
+                .sidenav {
+                    height: auto;
+                    padding: 15px;
+                }
+                .row.content {height: auto;} 
+            }
+
+            /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+            .row.content {height: 2000px;}
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            /* Set black background color, white text and some padding */
+            footer {
+                background-color: #555;
+                color: white;
+                padding: 15px;
+            }
+
+            /* On small screens, set height to 'auto' for sidenav and grid */
+            @media screen and (max-width: 767px) {
+                .sidenav {
+                    height: auto;
+                    padding: 15px;
+                }
+                .row.content {height: auto;}
+            }
+        </style>
+        <script>
+            var studentArray = getStudents()
+var removedStudents = []
+
+updateTable()
+
+function updateTable() {
+    var studentTable, table, head, body;
+    studentTable = document.getElementById("studentTable");
+
+    // empty out studentTable to start
+    while (studentTable.firstChild) {
+        studentTable.removeChild(studentTable.firstChild)
+    }
+
+    // create new empty table
+    table = document.createElement('table')
+    table.classList.add('table')
+    table.classList.add('table-bordered')
+
+    // add header
+    head = document.createElement('thead')
+    head.innerHTML = "<tr><th>Full Name</th><th>Email</th><th>Phone</th><th>Category</th><th>Group</th><th></th></tr>";
+    table.appendChild(head)
+
+    // create and populate  tbody
+    body = document.createElement('tbody')
+    studentArray.forEach(function(student, index) {
+		// create row for single student
+        var row = makeRow(student)
+		// add index for tracking in array
+        row.dataset.index = index
+		// add row to table
+        body.appendChild(row)
+    })
+
+	// add body to table, add table to div
+    table.appendChild(body)
+    studentTable.appendChild(table)
+}
+
+function removeStudentAtIndex(index) {
+	// remove 1 element starting at $index and concat it to removedStudents
+	var newRemoval = studentArray.splice(index, 1)
+    removedStudents = removedStudents.concat(newRemoval)
+
+    document.getElementById('removedStudents').innerHTML = JSON.stringify(removedStudents, null, 2)
+	
+	// update the table with the new studentArray
+    updateTable()
+}
+
+function makeRow(student) {
+    var tr = document.createElement('tr')
+
+	// add td for each property of student
+    Object.keys(student).forEach(function(key, index) {
+        var val = student[key]
+        var td = makeTd(val)
+        tr.appendChild(td)
+    })
+
+	// create button
+    var button = document.createElement('button')
+    button.innerHTML = 'X'
+	
+	// add click listener to remove student
+    button.addEventListener('click', function(e) {
+		// index is a property of each tr's dataset, so get from td' parentElement		
+        var index = e.target.parentElement.dataset.index
+		
+        removeStudentAtIndex(index)
+    })
+	
+    tr.appendChild(document.createElement('td').appendChild(button))
+    return tr
+}
+
+function makeTd(x) {
+    var el = document.createElement('td');
+    var text = document.createTextNode(x)
+    el.appendChild(text)
+    return el
+}
+
+// Mock student data
+// www.mockaroo.com
+function getStudents() {
+    return [{
+        "fullName": "Phillip Barnes",
+        "email": "pbarnes0@reddit.com",
+        "phone": "33-(454)149-4274",
+        "category": "id",
+        "groupID": 3
+    }, {
+        "fullName": "Robert Arnold",
+        "email": "rarnold1@wix.com",
+        "phone": "82-(768)895-0341",
+        "category": "augue aliquam",
+        "groupID": 1
+    }, {
+        "fullName": "Diane Campbell",
+        "email": "dcampbell2@myspace.com",
+        "phone": "380-(313)651-7030",
+        "category": "vel",
+        "groupID": 2
+    }, {
+        "fullName": "Adam Scott",
+        "email": "ascott3@buzzfeed.com",
+        "phone": "81-(498)839-0099",
+        "category": "orci mauris",
+        "groupID": 1
+    }, {
+        "fullName": "Paul Murray",
+        "email": "pmurray4@noaa.gov",
+        "phone": "389-(517)114-8415",
+        "category": "lacinia nisi",
+        "groupID": 1
+    }, {
+        "fullName": "Carol Gordon",
+        "email": "cgordon5@wordpress.com",
+        "phone": "970-(774)504-7281",
+        "category": "convallis",
+        "groupID": 2
+    }, {
+        "fullName": "Brandon Jordan",
+        "email": "bjordan6@goo.gl",
+        "phone": "850-(733)857-4716",
+        "category": "amet",
+        "groupID": 3
+    }, {
+        "fullName": "Anna Ruiz",
+        "email": "aruiz7@symantec.com",
+        "phone": "86-(646)888-2563",
+        "category": "sit",
+        "groupID": 3
+    }, {
+        "fullName": "Aaron Garza",
+        "email": "agarza8@facebook.com",
+        "phone": "27-(318)215-2425",
+        "category": "nunc",
+        "groupID": 1
+    }, {
+        "fullName": "Christine Gutierrez",
+        "email": "cgutierrez9@youku.com",
+        "phone": "7-(501)877-3850",
+        "category": "proin",
+        "groupID": 1
+    }]
+}
+
+            </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-3 sidenav">
+                    <h4>SP2</h4>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="#section1">Home</a></li>
+                    </ul><br>
+                    <div class="input-group">
+                        <input id = "searchStudent" type="text" class="form-control" placeholder="Search Students...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="searchStudent()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-sm-9">
+
+                    <h2>Overview of all current students</h2>
+                    <div id="studentTable"></div>
+                    <h2>Removed students</h2>
+                    <div>
+                        <pre id="removedStudents"></pre>
+                    </div>
+                    <hr> 
+
+
+                    <center>
+
+                        <h1>Add Student Registry</h1>
+
+                        <div class='signup'>
+
+                            <input id="fullName" type='text' placeholder='Full Name:' /> <input
+                                id="email" type='text' placeholder='Email:' /> <input id="phone"
+                                type='text' placeholder='Phone: ' /> <input id="category"
+                                type='text' placeholder='Category: ' /> 
+                            <input type='submit' placeholder='SUBMIT' onclick="addStudent()" />
+
+                        </div>
+
+                        <div class='whysign'>
+
+                            <p>
+                            <h3>Category is defined in color</h3>
+                            <br>Green = Beginner<br> <br>Yellow = Intermediate<br>
+                            <br>Red = Advanced<br> <br>
+                        </div>
+                    </center>
+                    <hr>
+                    <center>
+                        <h1>Assign Group</h1>
+                        <br> <br>
+                        <div id="studentOption">
+                            <script>
+                                getStudentInfo();
+                            </script>
+                        </div>
+                        <input id="groupID" type='text' placeholder='Assign Group ID: ' /> <input
+                            type='submit' placeholder='SUBMIT' onclick="addGroup()" />
+                    </center>
+                    <hr>
+                    <hr>
+                    <center>
+                        <h1>Delete Student</h1>
+                        <br> <br>
+                        <div id="studentDelete">
+                            <script>
+                                getStudentInfo2();
+                            </script>
+                        </div>
+                        <input	type='submit' placeholder='SUBMIT' onclick="deleteStudent()" />
+                    </center>
+                    <hr>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </body>
+</html>
+
