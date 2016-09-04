@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SP2</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="Site Root/style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="../script/scripts.js" type="text/javascript"></script>
+        <style>
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 200px;
+                background-color: #f1f1f1;
+            }
+
+            li a {
+                display: block;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+            /* Change the link color on hover */
+            li a:hover {
+                background-color: #555;
+                color: white;
+            }
+            #container {
+                width: 840px;
+                margin: 25px auto;
+            }
+
+            .whysign {
+                float: left;
+                background-color: white;
+                width: 480px;
+                height: 347px;
+                border-radius: 0 5px 5px 0;
+                padding-top: 20px;
+                padding-right: 20px;
+            }
+
+            .signup {
+                float: left;
+                width: 300px;
+                padding: 30px 20px;
+                background-color: white;
+                text-align: center;
+                border-radius: 5px 0 0 5px;
+            }
+
+            [type=text] {
+                display: block;
+                margin: 0 auto;
+                width: 80%;
+                border: 0;
+                border-bottom: 1px solid rgba(0,0,0,.2);
+                height: 45px;
+                line-height: 45px;  
+                margin-bottom: 10px;
+                font-size: 1em;
+                color: rgba(0,0,0,.4);
+            }
+
+            [type=submit] {
+                margin-top: 25px;
+                width: 80%;
+                border: 0;
+                background-color: #53CACE;
+                border-radius: 5px;
+                height: 50px;
+                color: white;
+                font-weight: 400;
+                font-size: 1em;
+            }
+
+            [type='text']:focus {
+                outline: none;
+                border-color: #53CACE;
+            }
+
+            h1 {
+                color: rgba(0,0,0,.7);
+                font-weight: 900;
+                font-size: 2.5em;
+            }
+
+            p {
+                color: rgba(0,0,0,.6);
+                font-size: 1.2em;
+                margin: 50px 0 50px 0;
+            }
+
+            span {
+                font-size: .75em;
+                background-color: white;
+                padding: 2px 5px;
+                color: rgba(0,0,0,.6);
+                border-radius: 2px;
+                box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+                margin: 5px;
+            }
+
+            span:hover {
+                color: #53CACE;
+            }
+
+            p:nth-of-type(2) {
+                font-size: 1em;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">SP2</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid text-center">
+            <div class="row content">
+                <div id="smartsidebar">
+                    <div class="col-sm-2 sidenav">
+                        <ul>
+                            <br />
+                            <li><a href="addStudent.html">Add Student</a></li>
+                            <br />
+                            <li><a href="deleteStudent.html">Delete Student</a></li>
+                            <br />
+                            <li><a href="editStudent.html">Edit Student</a></li>
+                            <br />
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-8 text-left">
+                    <center> <h1>Welcome</h1></center>
+                    <div id='container'>
+                        
+                        <div class='whysign'>
+                            <h1>Add Student Registry</h1>
+                            <p>
+                            <h3>Category is defined in color</h3><br>Green = Beginner<br>
+                            <br>Yellow = Intermediate<br><br>Red = Advanced<br> 
+                            <br>Group ID is added in the "<a href="editStudent.html">Edit Student</a>" page
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
